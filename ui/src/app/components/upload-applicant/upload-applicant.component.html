@@ -1,0 +1,183 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <h2>Applicant Information</h2>
+  <mat-card class="application-card">
+    <mat-card-content fxLayout="column">
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Name</h4>
+        <mat-form-field>
+          <input [(ngModel)]="name" matInput placeholder="Name">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Work experience</h4>
+        <mat-form-field>
+          <textarea [(ngModel)]="experienceSummary" matInput placeholder="Work experience" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Country authorised to work in</h4>
+        <mat-form-field>
+          <input [(ngModel)]="countryPermitted.country" matInput placeholder="Country to work">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>If yes, Work permit details</h4>
+        <mat-form-field>
+          <input [(ngModel)]="countryPermitted.permit" matInput placeholder="Work permit">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Upload photo</h4>
+        <mat-form-field>
+          <input matInput placeholder="Photo">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Mobile number</h4>
+        <mat-form-field>
+          <input [(ngModel)]="mobileNumber" matInput placeholder="Mobile number">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Email ID</h4>
+        <mat-form-field>
+          <input [(ngModel)]="email" matInput placeholder="Email ID">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Highest qualification</h4>
+        <mat-form-field>
+          <input [(ngModel)]="highestQualification" matInput placeholder="Highest qualification">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Institution name</h4>
+        <mat-form-field>
+          <input [(ngModel)]="institution" matInput placeholder="Institution name">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Current/Last employer</h4>
+        <mat-form-field>
+          <input [(ngModel)]="previousEmployer.employer" matInput placeholder="Current/Last employer">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Current/Last Designation</h4>
+        <mat-form-field>
+          <input [(ngModel)]="previousEmployer.designation" matInput placeholder="Current/Last Designation">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Current/Last CTC</h4>
+        <div>
+          <mat-form-field>
+            <input [(ngModel)]="previousEmployer.ctc.quantity" matInput placeholder="Current/Last CTC">
+          </mat-form-field>
+          <mat-form-field class="currencyInput">
+            <mat-select placeholder="Currency" [(value)]="selectedCurrency">
+              <mat-option *ngFor="let currency of currencies" [value]="currency">
+                {{ currency }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Expected CTC</h4>
+        <div>
+          <mat-form-field>
+            <input [(ngModel)]="expectedCTC.quantity" matInput placeholder="Expected CTC">
+          </mat-form-field>
+          <mat-form-field class="currencyInput">
+            <mat-select placeholder="Currency" [(value)]="selectedCurrency">
+              <mat-option *ngFor="let currency of currencies" [value]="currency">
+                {{ currency }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Notice period</h4>
+        <mat-form-field>
+          <input [(ngModel)]="noticePeriod" matInput placeholder="Notice period">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Do you have a two wheeler</h4>
+        <mat-form-field>
+          <mat-select [(value)]="twoWheeler" placeholder="For sales roles only">
+            <mat-option value="Yes">Yes</mat-option>
+            <mat-option value="No">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Reasons for Change</h4>
+        <mat-form-field>
+          <mat-select [(value)]="reasonForChange" placeholder="Reasons for change">
+            <mat-option *ngFor="let reason of reasons" [value]="reason">{{reason}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Career interest</h4>
+        <mat-form-field>
+          <input [(ngModel)]="careerInterest" matInput placeholder="Career interest">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>PAN Card Number</h4>
+        <mat-form-field>
+          <input [(ngModel)]="pancardNo" matInput placeholder="PAN Card">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Nationality</h4>
+        <mat-form-field>
+          <input [(ngModel)]="countryId.country" matInput placeholder="Country">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Unique citizenship ID</h4>
+        <mat-form-field>
+          <input [(ngModel)]="countryId.uniqueId" matInput placeholder="Aadhar/Unique ID">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Latest Resume</h4>
+        <mat-form-field>
+          <input matInput placeholder="Resume">
+        </mat-form-field>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Availability of Telephonic screening</h4>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput [matDatepicker]="pickerOne" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="pickerOne"></mat-datepicker-toggle>
+            <mat-datepicker #pickerOne></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Comments">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Availability for personal interview</h4>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput [matDatepicker]="pickerTwo" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="pickerTwo"></mat-datepicker-toggle>
+            <mat-datepicker #pickerTwo></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Comments">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

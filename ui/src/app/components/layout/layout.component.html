@@ -1,0 +1,13 @@
+<!--*ngIf="auth.isLoggedIn()"-->
+<mat-sidenav-container layout="row" fullscreen>
+  <div class="container" id="header" fxLayout fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <mat-toolbar role="header" color="primary">
+      <div fxFlex="100%">
+        <span id="place" class="home-link">{{projectName}}</span>
+      </div>
+    </mat-toolbar>
+  </div>
+  <router-outlet></router-outlet>
+  <!-- <login></login> -->
+  <!-- Routed views go here -->
+</mat-sidenav-container>

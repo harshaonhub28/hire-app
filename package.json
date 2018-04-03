@@ -1,0 +1,35 @@
+{
+  "name": "hire-app",
+  "version": "1.0.0",
+  "description": "App for storing applicant's info and certificates and for further check",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshaonhub28/hire-app.git"
+  },
+  "author": "Harsha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshaonhub28/hire-app/issues"
+  },
+  "homepage": "https://github.com/harshaonhub28/hire-app#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "~1.17.1",
+    "bunyan": "^1.8.12",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "express": "~4.15.2",
+    "express-validator": "^4.3.0",
+    "mongoose": "^5.0.3",
+    "morgan": "~1.8.1",
+    "request": "^2.83.0",
+    "serve-favicon": "~2.4.2",
+    "underscore": "^1.8.3",
+    "winston": "^2.4.0"
+  }
+}
