@@ -26,17 +26,28 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatDividerModule } from "@angular/material/divider";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
+import { SignaturePadModule } from "angular2-signaturepad";
 
+//components
 import { AppComponent } from "./app.component";
 import { LayoutComponent } from "./components/layout/layout.component";
 import { UploadApplicantComponent } from "./components/upload-applicant/upload-applicant.component";
-import { MatNativeDateModule } from "@angular/material/core";
+import { UploadDocumentsComponent } from "./components/upload-documents/upload-documents.component";
 
-const appRoutes: Routes = [{ path: "", component: UploadApplicantComponent }];
+const appRoutes: Routes = [
+  { path: "", component: UploadApplicantComponent },
+  { path: "upload-documents", component: UploadDocumentsComponent }
+];
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent, UploadApplicantComponent],
+  declarations: [
+    AppComponent,
+    LayoutComponent,
+    UploadApplicantComponent,
+    UploadDocumentsComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -62,8 +73,10 @@ const appRoutes: Routes = [{ path: "", component: UploadApplicantComponent }];
     MatRadioModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+    MatDividerModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    SignaturePadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

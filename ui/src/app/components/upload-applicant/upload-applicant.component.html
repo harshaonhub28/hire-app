@@ -21,17 +21,20 @@
           <input [(ngModel)]="countryPermitted.country" matInput placeholder="Country to work">
         </mat-form-field>
       </div>
-      <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
-        <h4>If yes, Work permit details</h4>
+      <div class="input-form" *ngIf="countryPermitted.country" fxLayout="row" fxLayoutAlign="space-between center">
+        <h4>Work permit details</h4>
         <mat-form-field>
           <input [(ngModel)]="countryPermitted.permit" matInput placeholder="Work permit">
         </mat-form-field>
       </div>
       <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
         <h4>Upload photo</h4>
-        <mat-form-field>
-          <input matInput placeholder="Photo">
-        </mat-form-field>
+        <div>
+          <button id="photo-custom-file-input" mat-button class="upload-button">
+            Choose file
+          </button>
+          <input id="photo-file-input" name="myFile" type="file" (change)="encodePhoto()">
+        </div>
       </div>
       <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
         <h4>Mobile number</h4>
@@ -121,6 +124,9 @@
             <mat-option *ngFor="let reason of reasons" [value]="reason">{{reason}}</mat-option>
           </mat-select>
         </mat-form-field>
+        <mat-form-field *ngIf="reasonForChange === 'Other'">
+          <input matInput [(ngModel)]="otherReason" placeholder="Please specify">
+        </mat-form-field>
       </div>
       <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
         <h4>Career interest</h4>
@@ -147,37 +153,70 @@
         </mat-form-field>
       </div>
       <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
-        <h4>Latest Resume</h4>
-        <mat-form-field>
-          <input matInput placeholder="Resume">
-        </mat-form-field>
+        <h4>Upload Latest Resume</h4>
+        <div>
+          <button id="resume-custom-file-input" mat-button class="upload-button">
+            Choose file
+          </button>
+          <input id="resume-file-input" name="myFile" type="file" (change)="encodeResume()">
+        </div>
       </div>
       <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
         <h4>Availability of Telephonic screening</h4>
         <div fxLayout="column" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <mat-form-field>
+              <input matInput [(ngModel)]="phoneAvailability.time" [owlDateTime]="dt1" placeholder="Choose a date">
+            </mat-form-field>
+            <button mat-icon-button class="trigger" [owlDateTimeTrigger]="dt1">
+              <mat-icon>today</mat-icon>
+            </button>
+            <owl-date-time #dt1></owl-date-time>
+          </div>
           <mat-form-field>
-            <input matInput [matDatepicker]="pickerOne" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="pickerOne"></mat-datepicker-toggle>
-            <mat-datepicker #pickerOne></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Comments">
+            <input [(ngModel)]="phoneAvailability.comments" matInput placeholder="Comments">
           </mat-form-field>
         </div>
       </div>
       <div class="input-form" fxLayout="row" fxLayoutAlign="space-between center">
         <h4>Availability for personal interview</h4>
         <div fxLayout="column" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <mat-form-field>
+              <input [(ngModel)]="interviewAvailability.time" matInput [owlDateTime]="dt2" placeholder="Choose a date">
+            </mat-form-field>
+            <button mat-icon-button class="trigger" [owlDateTimeTrigger]="dt2">
+              <mat-icon>today</mat-icon>
+            </button>
+            <owl-date-time #dt2></owl-date-time>
+          </div>
           <mat-form-field>
-            <input matInput [matDatepicker]="pickerTwo" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="pickerTwo"></mat-datepicker-toggle>
-            <mat-datepicker #pickerTwo></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Comments">
+            <input [(ngModel)]="interviewAvailability.comments" matInput placeholder="Comments">
           </mat-form-field>
         </div>
       </div>
+      <div>
+        <section>
+          <mat-checkbox [(ngModel)]="declared">
+            <h4 class="declaration" fxLayout="row" fxLayoutAlign="start">I hereby declare that the details furnished above are true and correct to the best of my knowledge and belief
+              and I undertake to inform you of any changes therein, immediately. In case any of the above information is
+              found to be false or untrue or misleading or misrepresenting, I am aware that I may be held liable for it.
+              I hereby authorize COS-X to secure the information in the cloud database and share of the information furnished
+              on this form with it’s clients on need basis.</h4>
+          </mat-checkbox>
+        </section>
+
+      </div>
+      <h3>Sign here</h3>
+      <div class="signature">
+
+        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+      </div>
+      <mat-card-actions>
+        <button class="upload-button" mat-raised-button (click)="onReset()">Reset Sign</button>
+        <button class="upload-button" mat-raised-button (click)="onSubmit()">Submit</button>
+      </mat-card-actions>
     </mat-card-content>
+
   </mat-card>
 </div>
